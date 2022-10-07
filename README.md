@@ -1,4 +1,4 @@
 # Custom ArchLinux Install
-Login Manager: slim
+Login Manager: ?
 
 Window Manager: openbox
