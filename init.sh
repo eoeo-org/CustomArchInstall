@@ -22,6 +22,8 @@ echo "Downloading confirm.zsh..."
 curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/confirm.zsh
 echo "Downloading install.sh..."
 curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/install.sh
+echo "Downloading inside-arch-chroot.sh..."
+curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/inside-arch-chroot.sh
 if [ ! -e setup.cfg ]; then
     echo "Downloading setup.cfg..."
     curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/setup.cfg
