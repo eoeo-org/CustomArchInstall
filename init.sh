@@ -13,12 +13,13 @@ cd /tmp/CustomArchInstaller
 
 # Download Resources
 echo "Downloading confirm.zsh..."
-wget https://github.com/Zel9278/CustomArchInstall/raw/master/confirm.zsh
+curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/confirm.zsh
 echo "Downloading install.sh..."
-wget https://github.com/Zel9278/CustomArchInstall/raw/master/install.sh
+curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/install.sh
 if [ ! -e setup.cfg ]; then
     echo "Downloading setup.cfg..."
-    wget https://github.com/Zel9278/CustomArchInstall/raw/master/setup.cfg
+    curl -fsSOL https://github.com/Zel9278/CustomArchInstall/raw/master/setup.cfg
 fi
+
 # Call Confirm Script
 zsh ./confirm.zsh
