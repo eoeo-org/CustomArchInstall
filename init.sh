@@ -4,6 +4,12 @@
 # This may cause the OS to disappear if installed in the wrong place, use at your own risk.
 # By Ced
 
+# Check UEFI
+if [ ! -e /sys/firmware/efi/efivars ]; then
+    echo "You is not UEFI!"
+    exit
+fi
+
 # Change to Install Directory
 mkdir /tmp/CustomArchInstaller
 if [ -e setup.cfg ]; then
