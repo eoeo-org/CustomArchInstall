@@ -2,8 +2,7 @@
 # install main script
 
 # Fix Directory
-echo "Fix Directory..."
-cd `dirname $0`
+cd /tmp/CustomArchInstaller
 
 # Load Config
 echo "Load Config..."

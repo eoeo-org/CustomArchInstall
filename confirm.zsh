@@ -2,7 +2,7 @@
 # Cconfirm script (zsh only)
 
 # Fix Directory
-cd `dirname $0`
+cd /tmp/CustomArchInstaller
 
 # Load Config
 . ./setup.cfg
