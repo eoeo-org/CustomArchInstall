@@ -5,7 +5,7 @@
 # Init
 echo "[chroot] Initting..."
 pacman -Syyu # update mirror list
-pacman -S curl networkmanager efibootmgr sudo --noconfirm # install include package
+pacman -S curl git networkmanager efibootmgr sudo --noconfirm # install include package
 
 # Set Timedate
 echo "[chroot] Setting Timedate..."
@@ -49,6 +49,19 @@ echo "${OS_USERNAME}:test" | chpasswd # change password(testing)
 # Install systemd-boot to boot
 echo "[chroot] Install systemd-boot..."
 bootctl --path=/boot install # install systemd-boot
+
+# Install GUI Packages
+echo "[chroot] Install GUI Packages..."
+pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack}
+
+# Install ly(from source)
+git clone --recurse-submodules https://github.com/fairyglade/ly /tmp/ly
+cd /tmp/ly
+make
+make install installsystemd
+systemctl enable ly.service
+cd ~/
+rm -rf /tmp/ly
 
 # Generate Boot Loader Setting
 echo "[chroot] Generating Boot Loader Setting..."
