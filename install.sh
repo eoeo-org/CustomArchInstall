@@ -34,7 +34,7 @@ echo "[installer] Partition Split With gdisk..."
 
 # UEFI Partition Setup
 echo "[installer] Format ${BOOT_PART} to fat32..."
-mkfs.fat -f -F32 $BOOT_PART # format to fat32
+mkfs.fat -F32 $BOOT_PART # format to fat32
 
 # BTRFS SetUp
 echo "[installer] Format ${OS_PART} to btrfs and setup partition..."
