@@ -14,6 +14,7 @@ echo "Install Disk: $INSTALL_DISK"
 echo "Boot Partition: $BOOT_PART"
 echo "OS Partition: $OS_PART"
 echo "Hostname: $HOSTNAME"
+echo "Username: $USERNAME"
 
 if read -q "REPLY?Do you want to run it? [y/N]: "; then
     bash ./install.sh
