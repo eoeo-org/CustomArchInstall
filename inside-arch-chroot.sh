@@ -28,9 +28,9 @@ echo "[chroot] Enable NetworkManager..."
 systemctl enable NetworkManager
 
 # Add User
-echo "[chroot] Add User($USERNAME)..."
-useradd -s /bin/bash -G wheel -m $USERNAME # add user
-echo "${USERNAME}:test" | chpasswd # change password(testing)
+echo "[chroot] Add User($OS_USERNAME)..."
+useradd -s /bin/bash -G wheel -m $OS_USERNAME # add user
+echo "${OS_USERNAME}:test" | chpasswd # change password(testing)
 
 # Install systemd-boot to boot
 echo "[chroot] Install systemd-boot..."
