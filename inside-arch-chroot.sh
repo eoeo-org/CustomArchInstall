@@ -5,7 +5,7 @@
 # Init
 echo "[chroot] Initting..."
 pacman -Syyu # update mirror list
-pacman -S curl git networkmanager efibootmgr sudo --noconfirm # install include package
+pacman -S curl vim htop git networkmanager efibootmgr sudo --noconfirm # install include package
 
 # Set Timedate
 echo "[chroot] Setting Timedate..."
@@ -48,7 +48,7 @@ echo "${OS_USERNAME}:test" | chpasswd # change password(testing)
 
 # Install GUI Packages
 echo "[chroot] Install GUI Packages..."
-pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} noto-fonts noto-fonts-{cjk,emoji,extra} --noconfirm
+pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox xterm pipewire pipewire-{pulse,alsa,jack} noto-fonts noto-fonts-{cjk,emoji,extra} --noconfirm
 
 # Install ly(from source)
 echo "[chroot] Install ly..."
@@ -81,6 +81,12 @@ echo "initrd /intel-ucode.img" >> /boot/loader/entries/archlinux.conf # add to e
 echo "initrd /amd-ucode.img" >> /boot/loader/entries/archlinux.conf # add to entry file/5
 echo "options root=PARTUUID=${PARTUUID} zswap.enabled=0 rootflags=subvol=@arch rw intel_pstate=no_hwp rootfstype=btrfs" >> /boot/loader/entries/archlinux.conf # add to entry file/6
 bootctl update # update boot entries
+
+# User Setting
+echo "[chroot] User Setting..."
+su - $USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment'
+su - $USERNAME -c 'systemctl --user enable pipewire'
+su - $USERNAME -c 'systemctl --user enable pipewire-pulse'
 
 # End Of arch-chroot
 echo "[chroot] arch-chroot Finished"
