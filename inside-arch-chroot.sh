@@ -46,10 +46,6 @@ echo "[chroot] Add User($OS_USERNAME)..."
 useradd -s /bin/bash -G wheel -m $OS_USERNAME # add user
 echo "${OS_USERNAME}:test" | chpasswd # change password(testing)
 
-# Install systemd-boot to boot
-echo "[chroot] Install systemd-boot..."
-bootctl --path=/boot install # install systemd-boot
-
 # Install GUI Packages
 echo "[chroot] Install GUI Packages..."
 pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} noto-fonts noto-fonts-{cjk,emoji,extra} --noconfirm
@@ -64,6 +60,13 @@ make install installsystemd # install systemd
 systemctl enable ly.service # enable ly
 cd ~/ # back to directory
 rm -rf /tmp/ly # remove source
+
+# Install systemd-boot to boot
+echo "[chroot] Install systemd-boot..."
+if [ -e /boot/EFI ]; then
+    bootctl --path=/boot remove
+fi
+bootctl --path=/boot install # install systemd-boot
 
 # Generate Boot Loader Setting
 echo "[chroot] Generating Boot Loader Setting..."
