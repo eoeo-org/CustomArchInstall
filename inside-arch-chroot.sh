@@ -16,16 +16,16 @@ hwclock --systohc --utc # sync timedate
 # Set Language
 echo "[chroot] Setting Language..."
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen # add language
-locale-gen # genelate lpcale
+locale-gen # genelate locale
 echo LANG=en_US.UTF-8 > /etc/locale.conf # set default language
 
 # Set Keymap
 echo "[chroot] Setting Keymap($OS_KEYMAP)..."
-echo KEYMAP=$OS_KEYMAP > /etc/vconsole.conf
+echo KEYMAP=$OS_KEYMAP > /etc/vconsole.conf # set keymap to file
 
 # Set Hostname
 echo "[chroot] Setting Hostname($OS_HOSTNAME)..."
-echo $OS_HOSTNAME > /etc/hostname
+echo $OS_HOSTNAME > /etc/hostname # set hostname to file
 
 # Enable Network Manager
 echo "[chroot] Enable NetworkManager..."
