@@ -54,9 +54,12 @@ echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf # set multilib/2
 pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware btrfs-progs # install to os partition
 genfstab -U /mnt >> /mnt/etc/fstab # set fstab
 
+# export env
+export HOSNAME=$HOSTNAME
+
 # Running arch-chroot
 arch-chroot /mnt /bin/bash -c "$(cat ./inside-arch-chroot.sh)"
 
 # End Of Install
-umount /mnt/boot # unmount boot
-umount /mnt # unmount os
+#umount /mnt/boot # unmount boot
+#umount /mnt # unmount os
