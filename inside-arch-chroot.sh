@@ -5,7 +5,7 @@
 # Init
 echo "[chroot] Initting..."
 pacman -Syyu # update mirror list
-pacman -S curl networkmanager efibootmgr --noconfirm # install include package
+pacman -S curl networkmanager efibootmgr sudo --noconfirm # install include package
 
 # Set Timedate
 echo "[chroot] Setting Timedate..."
@@ -19,6 +19,10 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen # add language
 locale-gen # genelate lpcale
 echo LANG=en_US.UTF-8 > /etc/locale.conf # set default language
 
+# Set Keymap
+echo "[chroot] Setting Keymap($OS_KEYMAP)..."
+echo KEYMAP=$OS_KEYMAP > /etc/vconsole.conf
+
 # Set Hostname
 echo "[chroot] Setting Hostname($OS_HOSTNAME)..."
 echo $OS_HOSTNAME > /etc/hostname
@@ -26,6 +30,16 @@ echo $OS_HOSTNAME > /etc/hostname
 # Enable Network Manager
 echo "[chroot] Enable NetworkManager..."
 systemctl enable NetworkManager
+
+# Edit sudoers
+echo "[chroot] Edit sudoers file..."
+echo 'Defaults pwfeedback
+Defaults passprompt="[33;1m(sudo)[0m password for [34;1m%u[0m: "
+
+root ALL=(ALL) ALL
+%wheel ALL=(ALL) ALL
+
+@includedir /etc/sudoers.d' > /etc/sudoers # write sudoers file
 
 # Add User
 echo "[chroot] Add User($OS_USERNAME)..."

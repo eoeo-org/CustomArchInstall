@@ -58,8 +58,9 @@ echo $HOSTNAME > /mnt/etc/hostname # set hostname
 # set env
 echo "[installer] Export Environments..."
 export $(blkid -o export $OS_PART | grep PARTUUID=) # export PARTUUID
-export OS_HOSTNAME # export username
+export OS_HOSTNAME # export hostname
 export OS_USERNAME # export username
+export OS_KEYMAP # export keymap
 
 # Running arch-chroot
 echo "[installer] Running arch-chroot..."
