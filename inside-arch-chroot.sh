@@ -6,10 +6,6 @@
 pacman -Syyu # update mirror list
 pacman -S curl networkmanager efibootmgr --noconfirm # install include package
 
-# Testing
-echo "T1: $T1"
-echo "T2: $T2"
-
 # Set Timedate
 TZ=$(curl "http://ip-api.com/line?fields=timezone") # get timezone
 ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime # link zoneinfo
@@ -24,6 +20,7 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf # set default language
 systemctl enable NetworkManager
 
 # Add User
+#adduser -s /bin/bash -G wheel -m $USERNAME
 
 # Install systemd-boot to boot
 #bootctl --path=/boot install # install systemd-boot
@@ -33,6 +30,8 @@ systemctl enable NetworkManager
 #echo "options root=PARTUUID=${PARTUUID} zswap.enabled=0 rootflags=subvol=@arch rw intel_pstate=no_hwp rootfstype=btrfs" >> /boot/loader/entries/archlinux.conf # add to entry file/4
 #bootctl update # update systemd-boot
 
+# test
+echo $avava
 
 # End Of arch-chroot
 echo "arch-chroot Finished"

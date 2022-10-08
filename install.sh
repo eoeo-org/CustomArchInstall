@@ -55,9 +55,9 @@ pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware btrfs-p
 genfstab -U /mnt >> /mnt/etc/fstab # set fstab
 echo $HOSTNAME > /mnt/etc/hostname # set hostname
 
-# testing env
-T1="aaa"
-export T2="bbb"
+# set env
+export $(blkid -o export $OS_PART | grep PARTUUID=) # export PARTUUID
+export avava # export testing
 
 # Running arch-chroot
 arch-chroot /mnt /bin/bash -c "$(cat ./inside-arch-chroot.sh)"
