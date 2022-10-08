@@ -52,7 +52,7 @@ bootctl --path=/boot install # install systemd-boot
 
 # Install GUI Packages
 echo "[chroot] Install GUI Packages..."
-pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} --noconfirm
+pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} noto-fonts noto-fonts-{cjk,emoji,extra} --noconfirm
 
 # Install ly(from source)
 echo "[chroot] Install ly..."
@@ -74,7 +74,9 @@ echo "[chroot] Generating Boot Entry..."
 echo "title Arch Linux (linux-zen)" >> /boot/loader/entries/archlinux.conf # add to entry file/1
 echo "linux /vmlinuz-linux-zen" >> /boot/loader/entries/archlinux.conf # add to entry file/2
 echo "initrd /initramfs-linux-zen.img" >> /boot/loader/entries/archlinux.conf # add to entry file/3
-echo "options root=PARTUUID=${PARTUUID} zswap.enabled=0 rootflags=subvol=@arch rw intel_pstate=no_hwp rootfstype=btrfs" >> /boot/loader/entries/archlinux.conf # add to entry file/4
+echo "initrd /intel-ucode.img" >> /boot/loader/entries/archlinux.conf # add to entry file/4
+echo "initrd /amd-ucode.img" >> /boot/loader/entries/archlinux.conf # add to entry file/5
+echo "options root=PARTUUID=${PARTUUID} zswap.enabled=0 rootflags=subvol=@arch rw intel_pstate=no_hwp rootfstype=btrfs" >> /boot/loader/entries/archlinux.conf # add to entry file/6
 bootctl update # update boot entries
 
 # End Of arch-chroot

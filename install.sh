@@ -51,7 +51,7 @@ curl -s "https://archlinux.org/mirrorlist/?country=AU&country=JP&protocol=http&p
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf # set pallael download
 echo "[multilib]" >> /etc/pacman.conf # set multilib/1
 echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf # set multilib/2
-pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware btrfs-progs # install to os partition
+pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware btrfs-progs {intel,amd}-ucode # install to os partition
 genfstab -U /mnt >> /mnt/etc/fstab # set fstab
 echo $HOSTNAME > /mnt/etc/hostname # set hostname
 
