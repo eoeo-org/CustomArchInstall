@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Cconfirm script (zsh only)
+# Confirm script (zsh only)
 
 # Fix Directory
 cd /tmp/CustomArchInstaller
