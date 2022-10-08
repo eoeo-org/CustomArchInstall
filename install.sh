@@ -11,6 +11,10 @@ echo "[installer] Load Config..."
 # Partition Split (gdisk)
 echo "[installer] Partition Split With gdisk..."
 (
+    echo x # enter expart option
+    echo z # clean disk
+) | gdisk $INSTALL_DISK
+(
     echo o # delete disk
     echo y # confirm
     echo n # uefi partition
