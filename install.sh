@@ -55,7 +55,7 @@ pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware btrfs-p
 genfstab -U /mnt >> /mnt/etc/fstab # set fstab
 
 # export env
-export HOSNAME=$HOSTNAME
+export HOSTNAME=$HOSTNAME
 
 # Running arch-chroot
 arch-chroot /mnt /bin/bash -c "$(cat ./inside-arch-chroot.sh)"
