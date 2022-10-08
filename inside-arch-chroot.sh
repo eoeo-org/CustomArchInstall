@@ -52,16 +52,17 @@ bootctl --path=/boot install # install systemd-boot
 
 # Install GUI Packages
 echo "[chroot] Install GUI Packages..."
-pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack}
+pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} --noconfirm
 
 # Install ly(from source)
-git clone --recurse-submodules https://github.com/fairyglade/ly /tmp/ly
-cd /tmp/ly
-make
-make install installsystemd
-systemctl enable ly.service
-cd ~/
-rm -rf /tmp/ly
+pacman -S libxcb xorg-xauth pam --noconfirm # install library
+git clone --recurse-submodules https://github.com/fairyglade/ly /tmp/ly # clone source
+cd /tmp/ly # change directory
+make # build
+make install installsystemd # install systemd
+systemctl enable ly.service # enable ly
+cd ~/ # back to directory
+rm -rf /tmp/ly # remove source
 
 # Generate Boot Loader Setting
 echo "[chroot] Generating Boot Loader Setting..."
