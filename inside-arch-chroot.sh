@@ -55,6 +55,7 @@ echo "[chroot] Install GUI Packages..."
 pacman -S xf86-video-{intel,amdgpu,ati,nouveau} xorg-server openbox pipewire pipewire-{pulse,alsa,jack} --noconfirm
 
 # Install ly(from source)
+echo "[chroot] Install ly..."
 pacman -S libxcb xorg-xauth pam --noconfirm # install library
 git clone --recurse-submodules https://github.com/fairyglade/ly /tmp/ly # clone source
 cd /tmp/ly # change directory
