@@ -34,6 +34,7 @@ OS_X_KEYMAP=jp                     # xorg(gui) keymap | Include Modified
 ## Using
 Window Manager: openbox\
 Login Manager: ly
+Audio: pipewire(pulse,alsa,jack)
 
 ## License
 This repository uses the `GNU General Public License 3.0`, see [LICENSE](https://github.com/Zel9278/CustomArchInstall/blob/master/LICENSE) for details.
