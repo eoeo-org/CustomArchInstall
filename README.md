@@ -3,8 +3,8 @@ One project is a Custom ArchLinux Installer to build a GUI environment with Open
 [![My Video](http://img.youtube.com/vi/5RsMxPyUh-c/0.jpg)](https://youtu.be/5RsMxPyUh-c)
 
 ## Attention
-This Script completely removes the disk and install ArchLinux.
-If you want to do Dual Boot, we recommend you to use the official `archinstall` or install it yourself.\
+**This Script completely removes the disk and install ArchLinux.
+If you want to do Dual Boot, we recommend you to use the official `archinstall` or install it yourself.**\
 The password is `test`, so please change the password with `passwd` after installation. (I have to unify this process in setup.cfg.)
 
 
