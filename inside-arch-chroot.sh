@@ -90,10 +90,10 @@ su - $USERNAME -c 'systemctl --user enable pipewire-pulse'
 
 # Set Xorg Keymap
 echo "[chroot] Setting Xorg Keymap($OS_X_KEYMAP)..."
-echo "Section "InputClass"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
-echo "        Identifier "system-keyboard"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
-echo "        MatchIsKeyboard "on"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
-echo "        Option "XkbLayout" "$OS_X_KEYMAP"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo "Section 'InputClass'" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo "        Identifier 'system-keyboard'" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo "        MatchIsKeyboard 'on'" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo "        Option 'XkbLayout' '$OS_X_KEYMAP'" >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo "EndSection" >> /etc/X11/xorg.conf.d/00-keyboard.conf
 
 # End Of arch-chroot
