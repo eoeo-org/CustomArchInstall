@@ -96,5 +96,41 @@ echo '        MatchIsKeyboard "on"' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo "        Option \"XkbLayout\" \"$OS_X_KEYMAP\"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 
+# Generate openbox menu
+echo "[chroot] Generating openbox Menu..."
+su - $USERNAME -c 'mkdir -p ~/.config/openbox'
+su - $USERNAME -c `echo '<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu  xmlns="http://openbox.org/3.4/menu">
+    <menu id="favorite" label="Favorite">
+        <item label="Xterm">
+            <action name="Execute">
+                <command>xterm</command>
+            </action>
+        </item>
+    </menu>
+
+    <menu id="root-menu" label="Openbox 3">
+        <menu id="favorite"/>
+        <separator />
+        <item label="Openbox Configuration Manager">
+            <action name="Execute">
+                <command>obconf</command>
+                <startupnotify>
+                    <enabled>yes</enabled>
+                </startupnotify>
+            </action>
+        </item>
+        <item label="Reconfigure">
+            <action name="Reconfigure Openbox" />
+        </item>
+        <separator />
+        <item label="Log Out">
+            <action name="Exit">
+                <prompt>yes</prompt>
+            </action>
+        </item>
+    </menu>
+</openbox_menu>' >> ~/.config/openbox/menu.xml`
+
 # End Of arch-chroot
 echo "[chroot] arch-chroot Finished"
