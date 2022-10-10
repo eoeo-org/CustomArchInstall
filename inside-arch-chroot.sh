@@ -98,7 +98,7 @@ echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 
 # Generate openbox menu
 echo "[chroot] Generating openbox Menu..."
-su - $USERNAME -c 'mkdir -p ~/.config/openbox'
+su - $USERNAME -c "mkdir -p /home/$USERNAME/.config/openbox"
 echo '<?xml version="1.0" encoding="utf-8"?>
 <openbox_menu  xmlns="http://openbox.org/3.4/menu">
     <menu id="favorite" label="Favorite">
@@ -131,7 +131,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
         </item>
     </menu>
 </openbox_menu>' >> /tmp/menu.xml
-su - $USERNAME -c 'cp /tmp/menu.xml ~/.config/openbox/'
+su - $USERNAME -c "cp /tmp/menu.xml /home/$USERNAME/.config/openbox/"
 rm /tmp/menu.xml
 
 # End Of arch-chroot
