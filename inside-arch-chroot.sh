@@ -84,9 +84,9 @@ bootctl update # update boot entries
 
 # User Setting
 echo "[chroot] User Setting..."
-su - $USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment'
-su - $USERNAME -c 'systemctl --user enable pipewire'
-su - $USERNAME -c 'systemctl --user enable pipewire-pulse'
+su - $OS_USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment'
+su - $OS_USERNAME -c 'systemctl --user enable pipewire'
+su - $OS_USERNAME -c 'systemctl --user enable pipewire-pulse'
 
 # Set Xorg Keymap
 echo "[chroot] Setting Xorg Keymap($OS_X_KEYMAP)..."
@@ -98,7 +98,7 @@ echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 
 # Generate openbox menu
 echo "[chroot] Generating openbox Menu..."
-su - $USERNAME -c "mkdir -p /home/$USERNAME/.config/openbox"
+su - $OS_USERNAME -c "mkdir -p /home/$OS_USERNAME/.config/openbox"
 echo '<?xml version="1.0" encoding="utf-8"?>
 <openbox_menu  xmlns="http://openbox.org/3.4/menu">
     <menu id="favorite" label="Favorite">
@@ -131,7 +131,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
         </item>
     </menu>
 </openbox_menu>' >> /tmp/menu.xml
-su - $USERNAME -c "cp /tmp/menu.xml /home/$USERNAME/.config/openbox/"
+su - $OS_USERNAME -c "cp /tmp/menu.xml /home/$OS_USERNAME/.config/openbox/"
 rm /tmp/menu.xml
 
 # End Of arch-chroot
