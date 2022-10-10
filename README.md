@@ -33,7 +33,7 @@ OS_X_KEYMAP=jp                     # xorg(gui) keymap | Include Modified
 
 ## Using
 Window Manager: openbox\
-Login Manager: ly
+Login Manager: ly\
 Audio: pipewire(pulse,alsa,jack)
 
 ## License
