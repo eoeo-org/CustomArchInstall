@@ -84,9 +84,10 @@ bootctl update # update boot entries
 
 # User Setting
 echo "[chroot] User Setting..."
-su - $OS_USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment'
-su - $OS_USERNAME -c 'systemctl --user enable pipewire'
-su - $OS_USERNAME -c 'systemctl --user enable pipewire-pulse'
+usermod -aG audio $OS_USERNAME # add "audio" group to user
+su - $OS_USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment' #  set XDG_RUNTIME_DIR
+su - $OS_USERNAME -c 'systemctl --user enable pipewire' # enable pipewire
+su - $OS_USERNAME -c 'systemctl --user enable pipewire-pulse' # enable pipewire-pulse
 
 # Set Xorg Keymap
 echo "[chroot] Setting Xorg Keymap($OS_X_KEYMAP)..."
@@ -94,11 +95,11 @@ echo 'Section "InputClass"' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo '        Identifier "system-keyboard"' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo '        MatchIsKeyboard "on"' >> /etc/X11/xorg.conf.d/00-keyboard.conf
 echo "        Option \"XkbLayout\" \"$OS_X_KEYMAP\"" >> /etc/X11/xorg.conf.d/00-keyboard.conf
-echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf # set keymap
 
 # Generate openbox menu
 echo "[chroot] Generating openbox Menu..."
-su - $OS_USERNAME -c "mkdir -p /home/$OS_USERNAME/.config/openbox"
+su - $OS_USERNAME -c "mkdir -p /home/$OS_USERNAME/.config/openbox" # make openbox config directory
 echo '<?xml version="1.0" encoding="utf-8"?>
 <openbox_menu  xmlns="http://openbox.org/3.4/menu">
     <menu id="favorite" label="Favorite">
@@ -130,9 +131,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>
             </action>
         </item>
     </menu>
-</openbox_menu>' >> /tmp/menu.xml
-su - $OS_USERNAME -c "cp /tmp/menu.xml /home/$OS_USERNAME/.config/openbox/"
-rm /tmp/menu.xml
+</openbox_menu>' >> /tmp/menu.xml # make menu file
+su - $OS_USERNAME -c "cp /tmp/menu.xml /home/$OS_USERNAME/.config/openbox/" # copy menu file to user
+rm /tmp/menu.xml # remove menu file
 
 # End Of arch-chroot
 echo "[chroot] arch-chroot Finished"
