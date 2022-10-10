@@ -14,7 +14,7 @@ The password is `test`, so please change the password with `passwd` after instal
 3. Launch the Live environment.
 4. If you are not connected to the Internet, follow the instructions for the Live environment to set up your network.
 5. Run `curl -fsSL arin.eov2.com | bash`.
-6. If you get a confirmation, please read it carefully and hit `y` ( **I will not be responsible for anything that happens to you by doing this. ** )
+6. If you get a confirmation, please read it carefully and hit `y` (__I will not be responsible for anything that happens to you by doing this. __)
 7. Have a cup of coffee or read a book and wait.
 8. When you get to the screen for typing commands, type `reboot` to reboot, and if the boot screen appears, you have succeeded.
 
