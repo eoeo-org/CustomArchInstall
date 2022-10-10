@@ -18,7 +18,7 @@ The password is `test`, so please change the password with `passwd` after instal
 7. Have a cup of coffee or read a book and wait.
 8. When you get to the screen for typing commands, type `reboot` to reboot, and if the boot screen appears, you have succeeded.
 
-# How to use(modified setup.cfg)
+## How to use(modified setup.cfg)
 1. Run `vim setup.cfg` (or `nano setup.cfg` or `emacs setup.cfg`) and set the following
 ```
 INSTALL_DISK=/dev/sda              # install disk
