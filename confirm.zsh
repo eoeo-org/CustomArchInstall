@@ -16,6 +16,7 @@ echo "OS Partition: $OS_PART"
 echo "Hostname: $OS_HOSTNAME"
 echo "Username: $OS_USERNAME"
 echo "Keymap: $OS_KEYMAP"
+echo "Xorg Keymap: $OS_X_KEYMAP"
 
 if read -q "REPLY?Do you want to run it? [y/N]: "; then
     bash ./install.sh
