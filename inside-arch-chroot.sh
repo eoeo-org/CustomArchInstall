@@ -85,7 +85,7 @@ bootctl update # update boot entries
 # User Setting
 echo "[chroot] User Setting..."
 usermod -aG audio $OS_USERNAME # add "audio" group to user
-su - $OS_USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment' #  set XDG_RUNTIME_DIR
+su - $OS_USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environment' # set XDG_RUNTIME_DIR
 su - $OS_USERNAME -c 'systemctl --user enable pipewire' # enable pipewire
 su - $OS_USERNAME -c 'systemctl --user enable pipewire-pulse' # enable pipewire-pulse
 
