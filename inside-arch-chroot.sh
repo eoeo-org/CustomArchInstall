@@ -88,5 +88,9 @@ su - $USERNAME -c 'echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> ~/.pam_environme
 su - $USERNAME -c 'systemctl --user enable pipewire'
 su - $USERNAME -c 'systemctl --user enable pipewire-pulse'
 
+# Set Xorg Keymap
+echo "[chroot] Setting Xorg Keymap..."
+localectl set-x11-keymap $OS_X_KEYMAP
+
 # End Of arch-chroot
 echo "[chroot] arch-chroot Finished"

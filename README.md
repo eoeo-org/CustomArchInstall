@@ -27,6 +27,7 @@ OS_PART=${INSTALL_DISK}2           # os install (with btrfs) partition
 OS_HOSTNAME=CustomInstallArchLinux # os hostname | Include Modified
 OS_USERNAME=arch-chan              # user name | Include Modified
 OS_KEYMAP=jp106                    # keymap | Include Modified
+OS_X_KEYMAP=jp                     # xorg(gui) keymap | Include Modified
 ```
 2. Follow the instructions in `How to Use`.
 
