@@ -15,6 +15,7 @@ echo "Boot Partition: $BOOT_PART"
 echo "OS Partition: $OS_PART"
 echo "Hostname: $OS_HOSTNAME"
 echo "Username: $OS_USERNAME"
+echo "User Password: $OS_USER_PASSWORD"
 echo "Keymap: $OS_KEYMAP"
 echo "Xorg Keymap: $OS_X_KEYMAP"
 

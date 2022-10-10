@@ -64,6 +64,7 @@ echo "[installer] Export Environments..."
 export $(blkid -o export $OS_PART | grep PARTUUID=) # export PARTUUID
 export OS_HOSTNAME # export hostname
 export OS_USERNAME # export username
+export OS_USER_PASSWORD # export user password
 export OS_KEYMAP # export keymap
 export OS_X_KEYMAP # export xorg keymap
 

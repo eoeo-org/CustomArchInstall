@@ -44,7 +44,7 @@ root ALL=(ALL) ALL
 # Add User
 echo "[chroot] Add User($OS_USERNAME)..."
 useradd -s /bin/bash -G wheel -m $OS_USERNAME # add user
-echo "${OS_USERNAME}:test" | chpasswd # change password(testing)
+echo "${OS_USERNAME}:${OS_USER_PASSWORD}" | chpasswd # change password
 
 # Install GUI Packages
 echo "[chroot] Install GUI Packages..."
